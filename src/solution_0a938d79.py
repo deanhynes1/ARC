@@ -175,6 +175,9 @@ def solve_0a938d79(t1 = localfile):
 def main():#Added main for tidy up
     '''
     function def::
+    Main function allows to run on cmd line with the path to test file as an argument
+    On cmd line check the arguement len is greater than 1, this means a path to the test file has been attached
+    
 
 
     '''
@@ -189,8 +192,9 @@ def main():#Added main for tidy up
         #print("I ran")
         filename = json.load(open(filename,'r'))
         a = solve_0a938d79(filename)
-    #if filename == 0:
+
     a = solve_0a938d79()#if no path to file is given on cmd run default on localfile.
+    print("you added not path to cmd line localfile run")
         ## printing the output of the slove function.
     for i in range(len(a)):#Put space between ouput arrays
         print(" ")
