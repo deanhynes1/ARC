@@ -19,6 +19,11 @@ import json #Import json to use the python json lib
 
 
 def check(*TEST):
+    '''
+    function def::
+
+
+    '''
 
     position = []
     position2 = []
@@ -124,11 +129,15 @@ def check(*TEST):
 
 
 def solve_0a938d79(t1):
+    '''
+    function def::
 
+
+    '''
     array = np.array(list(t1.items()))#put list into array
     TEST = []
     TESTOUT = []
-
+    # quick way to access the data needs to be made more elegent.
     Targetinput1 = (array[0][1][0]["input"])
     Targetinput2 = (array[0][1][1]["input"])
     Targetinput3 = (array[0][1][2]["input"])
@@ -165,6 +174,11 @@ def solve_0a938d79(t1):
     return TESTOUT
 
 def main():#Added main for tidy up
+    '''
+    function def::
+
+
+    '''
     t1 = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
     a = solve_0a938d79(t1)
         ## printing the output of the slove function.
