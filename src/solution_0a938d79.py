@@ -30,7 +30,6 @@ def solveInput(*TEST):
 
 
     '''
-
     position = []
     position2 = []
     for i in range(len(TEST)):
@@ -119,14 +118,12 @@ def solveInput(*TEST):
         #print(Targetinput)
         return Targetinput
 
-
-
-#def solve_0a938d79(t1 = localfile):
 def solve_0a938d79(t1 = localfile):
 
     '''
     function def::
     solve_0a938d79(t1) takes the input file and convers to array.
+    if not file is given on the cmd line solve works on the local file on my machine.
 
 
 
@@ -135,12 +132,13 @@ def solve_0a938d79(t1 = localfile):
     array = np.array(list(t1.items()))#put list into array
     TEST = [] # create container of the test inputs to be solved.
     TESTOUT = []# create container to send out the solved tests.
-    # quick way to access the data needs to be made more elegent.
+    # quick way to access the data and take each test as a septerated inputs
     Targetinput1 = (array[0][1][0]["input"])
     Targetinput2 = (array[0][1][1]["input"])
     Targetinput3 = (array[0][1][2]["input"])
     Targetinput4 = (array[0][1][3]["input"])
     Targetinput0 = (array[1][1][0]["input"])
+
     TEST.append(Targetinput0)
     TEST.append(Targetinput1)
     TEST.append(Targetinput2)
@@ -196,7 +194,6 @@ def main():#Added main for tidy up
     for i in range(len(a)):#Put space between ouput arrays
         print(" ")
         print(a[i])
-
 
 if __name__=="__main__":#execute only if run as a script
     main()
