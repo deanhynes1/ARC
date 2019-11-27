@@ -2,16 +2,20 @@
 """
 Created on Fri Nov 15 08:19:43 2019
 
-@author: dhynes
+@author: Dean Hynes
+Student 09101907
+Class Maters in A.I NUIG
 
 
 n solve which takes a single grid as input
 and which returns a single grid.
 """
-import operator
-import numpy as np
-from collections import defaultdict
-import json
+
+import numpy as np #Import np for array operations
+from collections import defaultdict #Import from collections import defaultdict for dictionary use
+import os # Import os to use pat to file
+import argparse #import argparse to use when running the code to get the path to the file
+import json #Import json to use the python json lib
 
 
 def check(*TEST):
@@ -119,7 +123,7 @@ def check(*TEST):
 
 
 
-def solve(t1):
+def solve_0a938d79(t1):
 
     array = np.array(list(t1.items()))#put list into array
     TEST = []
@@ -159,9 +163,15 @@ def solve(t1):
 
 
     return TESTOUT
-t1 = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
-a = solve(t1)
-## printing the output of the slove function.
-for i in range(len(a)):
-    print(" ")
-    print(a[i])
+
+def main():#Added main for tidy up
+    t1 = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
+    a = solve_0a938d79(t1)
+        ## printing the output of the slove function.
+    for i in range(len(a)):
+        print(" ")
+        print(a[i])
+
+
+if __name__=="__main__":#execute only if run as a script
+    main()
