@@ -23,10 +23,10 @@ def solveInput(*TEST):
     '''
     function def::
     The solveInput(*TEST) function takes the input grids as arrays,
-    checks where the colured squares and takes thier position
-    checks the spaces between both squares
-    adds a stipped effect to the ouput grid with the colurs and the spaces between them
-    vertically and horizontally where applicable to the end of the array.
+    checks where the colured squares and takes thier position.
+    check the spaces between both squares in the grid.
+    Add a stipped effect to the ouput grid with the colurs and the spaces between them,
+    vertically and horizontally where applicable all the way to the end each input grid.
 
 
     '''
@@ -39,22 +39,19 @@ def solveInput(*TEST):
         #print("in")
         #print(Targetinput)
 
-        if  len(Targetinput) <= 11:#check the type of image input
+        if  len(Targetinput) <= 11:#check the imput grid is vertical or horizontal in this folder
 
             value2 = []
             #print(range(len(Targetinput)))
-            for i in range(len(Targetinput)):
+            for i in range(len(Targetinput)):## loop through the grid and take the colour value and position
                 for j in range(len(Targetinput[0])):
-                    if Targetinput[i][j] > 0:
-                        value = Targetinput[i][j]
+                    if Targetinput[i][j] > 0:# if great than zero, this is a colour take the value and position
+                        value1 = Targetinput[i][j]
                         #print(i,j)
-                        value2.append(value)# the two values greater than 0
+                        value2.append(value1)# the two values greater than 0
                         position.append(j)# the value positions
-
             space = (position[1]-position[0])#the space between them
             #print(space)
-
-
             for i in range(len(Targetinput)):
                 for j in range(len(Targetinput)):
                     if Targetinput[i][j] >= 0:
@@ -177,7 +174,7 @@ def main():#Added main for tidy up
     function def::
     Main function allows to run on cmd line with the path to test file as an argument
     On cmd line check the arguement len is greater than 1, this means a path to the test file has been attached
-    
+
 
 
     '''
