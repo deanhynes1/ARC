@@ -18,9 +18,14 @@ import argparse #import argparse to use when running the code to get the path to
 import json #Import json to use the python json lib
 
 
-def check(*TEST):
+def solveInput(*TEST):
     '''
     function def::
+    The solveInput(*TEST) function takes the input grids,
+    checks where the colured squares and takes thier position
+    checks the spaces between both squares
+    adds a stipped effect to the ouput grid with the colurs and the spaces between them
+    vertically and horizontally where applicable to the end of the array.
 
 
     '''
@@ -59,9 +64,6 @@ def check(*TEST):
                             Targetinput[i][position[0]+3*space] = value2[1]
                             Targetinput[i][position[0]+4*space] = value2[0]
 
-
-
-                                #Targetinput[i-1][j+4*space] = value1[0]
                         if(space == 2):
                             Targetinput[i][position[0]] = value2[0]
                             Targetinput[i][position[0]] = value2[0]
@@ -82,10 +84,6 @@ def check(*TEST):
                             Targetinput[i][position[0]+3*space] = value2[1]
                             Targetinput[i][position[0]+4*space] = value2[0]
                             Targetinput[i][position[0]+5*space] = value2[1]
-
-
-
-
 
     ################################################################################
         else:
@@ -120,9 +118,6 @@ def check(*TEST):
                             Targetinput[(position2[1]-1)+6*space3][j-1] = values2[1]
                             Targetinput[(position2[0]-1)+8*space3][j-1] = values2[0] #red
 
-
-
-
         #print(Targetinput)
         return Targetinput
 
@@ -135,8 +130,8 @@ def solve_0a938d79(t1):
 
     '''
     array = np.array(list(t1.items()))#put list into array
-    TEST = []
-    TESTOUT = []
+    TEST = [] # create container of the test inputs to be solved.
+    TESTOUT = []# create container to send out the solved tests.
     # quick way to access the data needs to be made more elegent.
     Targetinput1 = (array[0][1][0]["input"])
     Targetinput2 = (array[0][1][1]["input"])
@@ -151,16 +146,14 @@ def solve_0a938d79(t1):
 
 
     for i in range(len(TEST)):
-        a = check(TEST[i])
+        a = solveInput(TEST[i])
         #TESTOUT.append('output')
         TESTOUT.append(a)
 
-    #for i in range(len(TESTOUT)):
-        #print(TESTOUT[i])
 
 
 
-    with open('test.json', 'w') as json_file:
+    with open('test.json', 'w') as json_file:#open a json file and fill with the answers.
         json.dump(TESTOUT, json_file)
 
     with open('test.json') as json_file:
