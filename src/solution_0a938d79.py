@@ -16,12 +16,13 @@ from collections import defaultdict #Import from collections import defaultdict 
 import os # Import os to use pat to file
 import argparse #import argparse to use when running the code to get the path to the file
 import json #Import json to use the python json lib
-
+import sys
+localfile = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
 
 def solveInput(*TEST):
     '''
     function def::
-    The solveInput(*TEST) function takes the input grids,
+    The solveInput(*TEST) function takes the input grids as arrays,
     checks where the colured squares and takes thier position
     checks the spaces between both squares
     adds a stipped effect to the ouput grid with the colurs and the spaces between them
@@ -123,12 +124,17 @@ def solveInput(*TEST):
 
 
 
-def solve_0a938d79(t1):
+#def solve_0a938d79(t1 = localfile):
+def solve_0a938d79(t1 = localfile):
+
     '''
     function def::
+    solve_0a938d79(t1) takes the input file and convers to array.
+
 
 
     '''
+    #t1 = json.load(open(t1,'r'))
     array = np.array(list(t1.items()))#put list into array
     TEST = [] # create container of the test inputs to be solved.
     TESTOUT = []# create container to send out the solved tests.
@@ -172,10 +178,21 @@ def main():#Added main for tidy up
 
 
     '''
-    t1 = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
-    a = solve_0a938d79(t1)
+    # Pass the path of the file as an argument
+    arguments = len(sys.argv) - 1
+    parse = argparse.ArgumentParser()
+    parse.add_argument("Path_to_file", help="Provide file path.")
+    position = 1
+    if (arguments >= position): #check arguements are given at cmd line and pick up the path to the file
+        args = parse.parse_args()
+        filename = args.Path_to_file
+        #print("I ran")
+        filename = json.load(open(filename,'r'))
+        a = solve_0a938d79(filename)
+    #if filename == 0:
+    a = solve_0a938d79()#if no path to file is given on cmd run default on localfile.
         ## printing the output of the slove function.
-    for i in range(len(a)):
+    for i in range(len(a)):#Put space between ouput arrays
         print(" ")
         print(a[i])
 
