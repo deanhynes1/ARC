@@ -65,8 +65,6 @@ After you've obtained the correct answer for the current test input grid, you ca
 
 When you're done with a task, use the "load task" button to open a new task.
 
-### Git Repo for Assignment 3
-A new src directory that will contain hand-coded solutions for this assinment. 
-
-
-
+### Git Repo for Assignment 3 in PTAI NUIG
+The purpose of this repository is to have a central place for all team members to work on Assignment 3.
+A new src directory was created that will contain hand-coded solutions for this assignment.
