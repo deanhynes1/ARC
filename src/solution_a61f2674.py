@@ -4,17 +4,20 @@ Created on Fri Nov 22 19:00:55 2019
 
 @author: Mohammed Khalaquzzaman
 ID:19239991
+File Name = 'a61f2674.json'
+File location = '../src/a61f2674.json
+Solution File: solution_a61f2674.py
 """
 
 import json # Imported json python library
 import numpy as np # Imported numpy as np
 import os as os # Import os python libray for using file path 
 import argparse # Imported argparse for parsing th file path
+from input_utility import check_train_test #Imported input utility to extact train & test length
 
 # INDEX = [0, 1]
-# Primary key of Input Json file
-AREA = 'train'
-# filename = 'a61f2674.json'
+# Primary keys of Input Json file
+AREA = ['train', 'test']
 
 # Parsing the Filepath as script argument
 parser = argparse.ArgumentParser()
@@ -22,7 +25,7 @@ parser.add_argument("file_path", help="Provide file path.")
 args = parser.parse_args()
 filename = args.file_path
 
-
+'''
 def check_train_test(file):
     """
     Function to Read the input file
@@ -35,7 +38,7 @@ def check_train_test(file):
     check_test_input = len(js['test'])
     return {'Train Input': check_train_input, 'Test Input': check_test_input}
     read_file.close()
-
+'''
 
 def initialize(file, index, area='train'):
     """
@@ -105,15 +108,23 @@ def print_results(file_name, area, area_index, ip_matrix, org_op_matrix, op_matr
 
 def main():
     """
-    Main execution workflow
+    Main execution workflow for both Train and Test Input
     """
     len_dict = check_train_test(filename)
     train_length = len_dict['Train Input']
+    test_length = len_dict['Test Input']
     print(len_dict)
-    for index in range(train_length):
-        ip_matrix, org_op_matrix, f_name = initialize(filename, index, AREA)
-        op_matrix, tl_ix, sh_ix = solve_a61f2674_task(ip_matrix)
-        print_results(f_name, AREA, index, ip_matrix, org_op_matrix, op_matrix, tl_ix, sh_ix)
+    for area in AREA:
+        if area == 'train':
+            max_length = train_length
+        elif area == 'test':
+            max_length = test_length
+            
+        for index in range(max_length):
+            ip_matrix, org_op_matrix, f_name = initialize(filename, index, area)
+            op_matrix, tl_ix, sh_ix = solve_a61f2674_task(ip_matrix)
+            print_results(f_name, area, index, ip_matrix, org_op_matrix, op_matrix, tl_ix, sh_ix)
+    
 
 
 if __name__ == "__main__":
