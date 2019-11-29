@@ -68,12 +68,7 @@ When you're done with a task, use the "load task" button to open a new task.
 ### Git Repo for Assignment 3 in PTAI NUIG
 The purpose of this repository is to have a central place for all team members to work on Assignment 3.
 The team members include::
-Dean Hynes
-Mohamed TALAAT
-Mohammed Khalaquzzaman
+Dean Hynes/Mohamed TALAAT/Mohammed Khalaquzzaman
 
 A new src directory was created that will contain hand-coded solutions for this assignment.
-The solutions are for the following tasks::
-a61f2674
-0a938d79
-e179c5f4
+The solutions are for the following tasks:: a61f2674/0a938d79/e179c5f4

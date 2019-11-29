@@ -189,7 +189,7 @@ def main():#Added main for tidy up
         a = solve_0a938d79(filename)
 
     a = solve_0a938d79()#if no path to file is given on cmd run default on localfile.
-    print("you added not path to cmd line localfile run")
+    print("You added no path to cmd line so localfile run")
         ## printing the output of the slove function.
     for i in range(len(a)):#Put space between ouput arrays
         print(" ")
