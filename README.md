@@ -75,6 +75,6 @@ The solutions are for the following tasks:: a61f2674/0a938d79/e179c5f4
 
 ### How to run solutions to solve a61f2674/0a938d79/e179c5f4
 While in the GitHub\ARC\src folder "On windows" from the cmd line
-enter::c>python solution_<number>.py    <path to file>
+enter::c>python solution_number.py  and  path to file
 
 e.g. python solution_0a938d79.py C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json
