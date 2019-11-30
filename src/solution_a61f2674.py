@@ -45,7 +45,7 @@ def initialize(file, index, area='test'):
     f.close()
 
 
-def solve_a61f2674(input_matrix):
+def solve(input_matrix):
     """
     Function to calculate the Output matrix
     :param input_matrix: Input Matrix
@@ -94,7 +94,7 @@ def main():
             
     for index in range(test_length):
         input_matrix, org_output_matrix, f_name = initialize(filename, index, AREA)
-        calc_output_matrix, tallest_index, shortest_index = solve_a61f2674(input_matrix)
+        calc_output_matrix, tallest_index, shortest_index = solve(input_matrix)
         print_results(f_name, calc_output_matrix, tallest_index, shortest_index)
 
 

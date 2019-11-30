@@ -70,7 +70,7 @@ def solve(input_matrix):
 def print_results(file_name, calc_output_matrix):
     """
         Function to print results
-        """
+    """
     print(str(np.matrix(calc_output_matrix)).replace(']',' ').replace('[',' '))
 
 
