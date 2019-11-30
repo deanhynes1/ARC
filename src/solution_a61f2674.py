@@ -79,8 +79,8 @@ def solve(input_matrix):
 
 def print_results(file_name, calc_output_matrix, tallest_index, shortest_index):
     """
-    Function to print results
-    Print solution output without bracket
+    Function to print results without bracket
+     
     """
     print(str(np.matrix(calc_output_matrix)).replace(']',' ').replace('[',' '))
 
