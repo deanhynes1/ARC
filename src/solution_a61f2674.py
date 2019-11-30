@@ -7,6 +7,7 @@ ID:19239991
 File Name = 'a61f2674.json'
 File location = '../src/a61f2674.json
 Solution File: solution_a61f2674.py
+
 """
 
 import json # Imported json python library
@@ -16,8 +17,8 @@ import argparse # Imported argparse for parsing th file path
 from input_utility import check_train_test #Imported input utility to extact train & test length
 
 # INDEX = [0, 1]
-# Primary keys of Input Json file
-AREA = ['train', 'test']
+# Primary test keys of Input Json file
+AREA = 'test'
 
 # Parsing the Filepath as script argument
 parser = argparse.ArgumentParser()
@@ -25,22 +26,7 @@ parser.add_argument("file_path", help="Provide file path.")
 args = parser.parse_args()
 filename = args.file_path
 
-'''
-def check_train_test(file):
-    """
-    Function to Read the input file
-    :param file: Input Json file
-    :return: Index lengths of Train and test matrices
-    """
-    read_file = open(file, 'r')
-    js = json.load(read_file)
-    check_train_input = len(js['train'])
-    check_test_input = len(js['test'])
-    return {'Train Input': check_train_input, 'Test Input': check_test_input}
-    read_file.close()
-'''
-
-def initialize(file, index, area='train'):
+def initialize(file, index, area='test'):
     """
     Function to read the input file and fetch Input and Original Output matrices
     :param file: Input Json File
@@ -50,16 +36,16 @@ def initialize(file, index, area='train'):
     """
     f = open(file, 'r')
     file_name = os.path.basename(f.name)
-    js = json.load(f)
-    input_matrix = np.matrix(js[area][index]['input'])
+    load_json_file = json.load(f) # load json file 
+    input_matrix = np.matrix(load_json_file[area][index]['input'])
     # print("Original Input Matrix\n\n", input_matrix)
-    original_output_matrix = np.matrix(js[area][index]['output'])
+    original_output_matrix = np.matrix(load_json_file[area][index]['output'])
     # print("\nOriginal Output Matrix\n\n", original_output_matrix)
     return input_matrix, original_output_matrix, file_name
     f.close()
 
 
-def solve_a61f2674_task(input_matrix):
+def solve_a61f2674(input_matrix):
     """
     Function to calculate the Output matrix
     :param input_matrix: Input Matrix
@@ -78,7 +64,7 @@ def solve_a61f2674_task(input_matrix):
         if non_zero > 0 and non_zero < shortest_val:
             shortest_val = non_zero
             shortest_index = index
-    # print(tallest_index, shortest_index)
+
 
     # Creating new matrix with zeros
     new_matrix = np.zeros(shape=input_matrix.shape, dtype=int)
@@ -91,40 +77,25 @@ def solve_a61f2674_task(input_matrix):
     return new_matrix, tallest_index, shortest_index
 
 
-def print_results(file_name, area, area_index, ip_matrix, org_op_matrix, op_matrix,
-                  tall_index, short_index):
+def print_results(file_name, calc_output_matrix, tallest_index, shortest_index):
     """
     Function to print results
+    Print solution output without bracket
     """
-    print('=====Filename: {}, Area: {}, Index: {}====='.format(file_name, area, area_index+1))
-    print('=====', 'input', '=====')
-    print("{}\n".format(ip_matrix))
-    # print('Shortest Index: {}, Tallest Index: {}'.format(short_index, tall_index))
-    print('=====', 'original output', '=====')
-    print("{}\n".format(org_op_matrix))
-    print('=====', 'calculated output', '=====')
-    print("{}\n".format(op_matrix))
+    print(str(np.matrix(calc_output_matrix)).replace(']',' ').replace('[',' '))
 
 
 def main():
     """
-    Main execution workflow for both Train and Test Input
+    Main execution workflow for Test Input
     """
     len_dict = check_train_test(filename)
-    train_length = len_dict['Train Input']
     test_length = len_dict['Test Input']
-    print(len_dict)
-    for area in AREA:
-        if area == 'train':
-            max_length = train_length
-        elif area == 'test':
-            max_length = test_length
             
-        for index in range(max_length):
-            ip_matrix, org_op_matrix, f_name = initialize(filename, index, area)
-            op_matrix, tl_ix, sh_ix = solve_a61f2674_task(ip_matrix)
-            print_results(f_name, area, index, ip_matrix, org_op_matrix, op_matrix, tl_ix, sh_ix)
-    
+    for index in range(test_length):
+        input_matrix, org_output_matrix, f_name = initialize(filename, index, AREA)
+        calc_output_matrix, tallest_index, shortest_index = solve_a61f2674(input_matrix)
+        print_results(f_name, calc_output_matrix, tallest_index, shortest_index)
 
 
 if __name__ == "__main__":
