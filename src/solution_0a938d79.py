@@ -5,18 +5,22 @@ Created on Fri Nov 15 08:19:43 2019
 @author: Dean Hynes
 Student 09101907
 Class Maters in A.I NUIG
+File Name = '0a938d79.json'
+File location = '../src/0a938d79.json
+Solution File: solution_0a938d79.json
 
 
 n solve which takes a single grid as input
 and which returns a single grid.
 """
-
+from __future__ import print_function
 import numpy as np #Import np for array operations
 from collections import defaultdict #Import from collections import defaultdict for dictionary use
 import os # Import os to use pat to file
 import argparse #import argparse to use when running the code to get the path to the file
 import json #Import json to use the python json lib
 import sys
+
 localfile = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
 
 def solveInput(*TEST):
@@ -173,8 +177,6 @@ def main():#Added main for tidy up
     Main function allows to run on cmd line with the path to test file as an argument
     On cmd line check the arguement len is greater than 1, this means a path to the test file has been attached
 
-
-
     '''
     # Pass the path of the file as an argument
     arguments = len(sys.argv) - 1
@@ -187,13 +189,27 @@ def main():#Added main for tidy up
         #print("I ran")
         filename = json.load(open(filename,'r'))
         a = solve_0a938d79(filename)
-
-    a = solve_0a938d79()#if no path to file is given on cmd run default on localfile.
-    print("You added no path to cmd line so localfile run")
+    else:
+        a = solve_0a938d79()#if no path to file is given on cmd run default on localfile.
+        print("You added no path to cmd line so localfile run")
+    #for element in a:
+        #sys.stdout.write(str(element))
         ## printing the output of the slove function.
-    for i in range(len(a)):#Put space between ouput arrays
-        print(" ")
-        print(a[i])
+
+    #for i in range(len(a)):#Put space between ouput arrays
+        #print(" ")
+        #print(*a[i],sep=' ')
+    for row in a:
+        for elem in row:
+            print(*elem, end=' ')
+            print('\n')
+        print()
+
+        #Print(*a[i], sep="")
+        #print (" ".join(map(str,a)))
+
+
+
 
 if __name__=="__main__":#execute only if run as a script
     main()
