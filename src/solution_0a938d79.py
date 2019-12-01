@@ -19,7 +19,7 @@ from collections import defaultdict #Import from collections import defaultdict 
 import os # Import os to use pat to file
 import argparse #import argparse to use when running the code to get the path to the file
 import json #Import json to use the python json lib
-import sys
+import sys # to for use on cmd input
 
 localfile = json.load(open(r"C:\Users\dhynes\Documents\GitHub\ARC\data\training\0a938d79.json"))
 
@@ -146,7 +146,7 @@ def solve_0a938d79(t1 = localfile):
     TEST.append(Targetinput3)
     TEST.append(Targetinput4)
 
-    
+
 
     for i in range(len(TEST)):
         a = solveInput(TEST[i])
