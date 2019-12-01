@@ -4,10 +4,12 @@ Created on Fri Nov 22 19:00:55 2019
 
 @author: Mohammed Khalaquzzaman
 ID:19239991
-File Name = a61f2674.json
-File location = C:\MAO\CT5148\ARC\data\training\a61f2674.json
+Task Json file Name = 'a61f2674.json'
+File location = 'C:\MAO\CT5148\ARC\data\training\a61f2674.json'
 Solution File: solution_a61f2674.py
 
+Solve the task which has a tallest and shortest grid as input
+and which returns tallest and shortest grid with red and blue color.
 """
 
 import json # Imported json python library
@@ -18,15 +20,16 @@ from input_utility import check_train_test #Imported input utility to extact tra
 
 # INDEX = [0, 1]
 # Primary test keys of Input Json file
-AREA = 'test'
+AREA = ['train','test']
 
 # Parsing the Filepath as script argument
 parser = argparse.ArgumentParser()
 parser.add_argument("file_path", help="Provide file path.")
 args = parser.parse_args()
-filename = args.file_path
+filename = args.file_path # Json file path
 
-def initialize(file, index, area='test'):
+
+def initialize(file, index, area='train'):
     """
     Function to read the input file and fetch Input and Original Output matrices
     :param file: Input Json File
@@ -34,8 +37,8 @@ def initialize(file, index, area='test'):
     :param area: Area
     :return: Input matrix, Original Output matrix, File base name
     """
-    f = open(file, 'r')
-    file_name = os.path.basename(f.name)
+    f = open(file, 'r') # open json file
+    file_name = os.path.basename(f.name) # get the filename
     load_json_file = json.load(f) # load json file 
     input_matrix = np.matrix(load_json_file[area][index]['input'])
     # print("Original Input Matrix\n\n", input_matrix)
@@ -77,24 +80,35 @@ def solve(input_matrix):
     return new_matrix, tallest_index, shortest_index
 
 
-def print_results(file_name, calc_output_matrix, tallest_index, shortest_index):
+def print_results(file_name, area, area_index, ip_matrix, org_op_matrix, op_matrix,
+                  tall_index, short_index):
     """
-    Function to print results without bracket 
+    Function to print results
+    Print solution output without bracket
     """
-    print(str(np.matrix(calc_output_matrix)).replace(']',' ').replace('[',' '))
+
+    print(str(np.matrix(org_op_matrix)).replace(']',' ').replace('[',' '))
+    print("\n".format(str(np.matrix(op_matrix)).replace(']',' ').replace('[',' ')))
 
 
 def main():
     """
-    Main execution workflow for Test Input
-    """
+    Main execution workflow for Train and Test Input
+    """          
     len_dict = check_train_test(filename)
-    test_length = len_dict['Test Input']
-            
-    for index in range(test_length):
-        input_matrix, org_output_matrix, f_name = initialize(filename, index, AREA)
-        calc_output_matrix, tallest_index, shortest_index = solve(input_matrix)
-        print_results(f_name, calc_output_matrix, tallest_index, shortest_index)
+    train_length = len_dict['Train Input']
+    test_length = len_dict['Test Input'] 
+    #print(len_dict)
+
+    for area in AREA:
+        if area == 'train':
+            max_len = train_length
+        elif area == 'test':
+            max_len = test_length
+        for index in range(max_len):
+            ip_matrix, org_op_matrix, f_name = initialize(filename, index, area)
+            op_matrix, tl_ix, sh_ix = solve(ip_matrix)
+            print_results(f_name, AREA, index, ip_matrix, org_op_matrix, op_matrix, tl_ix, sh_ix)
 
 
 if __name__ == "__main__":
