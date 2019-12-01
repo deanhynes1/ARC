@@ -5,7 +5,7 @@ Created on Fri Nov 22 19:00:55 2019
 @author: Mohammed Khalaquzzaman
 ID:19239991
 File Name = 'a61f2674.json'
-File location = '../src/a61f2674.json
+File location = 'C:\MAO\CT5148\ARC\data\training\a61f2674.json
 Solution File: solution_a61f2674.py
 
 """

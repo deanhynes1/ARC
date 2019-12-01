@@ -5,7 +5,7 @@ Created on Fri Nov 22 19:00:55 2019
 @author: Mohammed Khalaquzzaman
 ID:19239991
 File Name = 'e179c5f4.json'
-File location = '../src/e179c5f4.json
+File location = 'C:\MAO\CT5148\ARC\data\training\e179c5f4.json
 Solution File: solution_e179c5f4
 """
 import json # Imported json python library
