@@ -64,7 +64,6 @@ def solveInput(*TEST):
 
                         if(space == 2):
                             Targetinput[i][position[0]] = value2[0]
-                            Targetinput[i][position[0]] = value2[0]
                             Targetinput[i][position[0]+space] = value2[1]
                             Targetinput[i][position[0]+2*space] = value2[0]
                             Targetinput[i][position[0]+3*space] = value2[1]
@@ -140,12 +139,14 @@ def solve_0a938d79(t1 = localfile):
     Targetinput4 = (array[0][1][3]["input"])#train data location
     Targetinput0 = (array[1][1][0]["input"])#loaction of the input test.
     ## Solve all inputs in the file
-    TEST.append(Targetinput0)#this is the input grid, only neede for this assignment.
-    #TEST.append(Targetinput1)
-    #TEST.append(Targetinput2)
-    #TEST.append(Targetinput3)
-    #TEST.append(Targetinput4)
 
+    TEST.append(Targetinput0)#this is the input grid, only neede for this assignment.
+    TEST.append(Targetinput1)
+    TEST.append(Targetinput2)
+    TEST.append(Targetinput3)
+    TEST.append(Targetinput4)
+
+    
 
     for i in range(len(TEST)):
         a = solveInput(TEST[i])
