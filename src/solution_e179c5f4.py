@@ -43,23 +43,7 @@ def initialize(file, index, area='train'):
     original_output_matrix = load_json_file[area][index]['output']
     return input_matrix, original_output_matrix, file_name
     f.close()
-'''
-def initialize(file, index, area='train'):
-    """
-    Function to read the input file and fetch Input and Original Output matrices
-    :param file: Input Json File
-    :param index: Current Index value
-    :param area: Area
-    :return: Input matrix, Original Output matrix, File base name
-    """
-    f = open(file, 'r')
-    file_name = os.path.basename(f.name)
-    js = json.load(f)
-    input_matrix = js[area][index]['input']
-    original_output_matrix = js[area][index]['output']
-    return input_matrix, original_output_matrix, file_name
-    f.close()
-'''    
+   
 def solve(input_matrix):
     """
     Function to calculate the Output matrix
