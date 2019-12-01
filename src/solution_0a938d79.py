@@ -38,14 +38,11 @@ def solveInput(*TEST):
     position2 = []
     for i in range(len(TEST)):
         Targetinput = TEST[i]
-        #print("   ")
-        #print("in")
-        #print(Targetinput)
 
-        if  len(Targetinput) <= 11:#check the imput grid is vertical or horizontal in this folder
+        if  len(Targetinput) <= len(Targetinput[0]):#check the imput grid is vertical or horizontal in this folder
 
             value2 = []
-            #print(range(len(Targetinput)))
+
             for i in range(len(Targetinput)):## loop through the grid and take the colour value and position
                 for j in range(len(Targetinput[0])):
                     if Targetinput[i][j] > 0:# if great than zero, this is a colour take the value and position
@@ -126,8 +123,8 @@ def solve_0a938d79(t1 = localfile):
 
     '''
     function def::
-    solve_0a938d79(t1) takes the input file and convers to array.
-    if not file is given on the cmd line solve works on the local file on my machine.
+    solve_0a938d79(t1) takes the input file and converts to numpy list.
+    If not file is given on the cmd line solve works on the local file on my machine.
 
 
 
@@ -137,17 +134,17 @@ def solve_0a938d79(t1 = localfile):
     TEST = [] # create container of the test inputs to be solved.
     TESTOUT = []# create container to send out the solved tests.
     # quick way to access the data and take each test as a septerated inputs
-    Targetinput1 = (array[0][1][0]["input"])
-    Targetinput2 = (array[0][1][1]["input"])
-    Targetinput3 = (array[0][1][2]["input"])
-    Targetinput4 = (array[0][1][3]["input"])
-    Targetinput0 = (array[1][1][0]["input"])
-
-    TEST.append(Targetinput0)
-    TEST.append(Targetinput1)
-    TEST.append(Targetinput2)
-    TEST.append(Targetinput3)
-    TEST.append(Targetinput4)
+    Targetinput1 = (array[0][1][0]["input"])#train data location
+    Targetinput2 = (array[0][1][1]["input"])#train data location
+    Targetinput3 = (array[0][1][2]["input"])#train data location
+    Targetinput4 = (array[0][1][3]["input"])#train data location
+    Targetinput0 = (array[1][1][0]["input"])#loaction of the input test.
+    ## Solve all inputs in the file
+    TEST.append(Targetinput0)#this is the input grid, only neede for this assignment.
+    #TEST.append(Targetinput1)
+    #TEST.append(Targetinput2)
+    #TEST.append(Targetinput3)
+    #TEST.append(Targetinput4)
 
 
     for i in range(len(TEST)):
@@ -155,19 +152,12 @@ def solve_0a938d79(t1 = localfile):
         #TESTOUT.append('output')
         TESTOUT.append(a)
 
+    #with open('test.json', 'w') as json_file:#open a json file and fill with the answers.
+        #json.dump(TESTOUT, json_file)
 
-
-
-    with open('test.json', 'w') as json_file:#open a json file and fill with the answers.
-        json.dump(TESTOUT, json_file)
-
-    with open('test.json') as json_file:
-        readOut = json.load(json_file)
+    #with open('test.json') as json_file:
+        #readOut = json.load(json_file)
     #print(readOut)
-
-
-
-
 
     return TESTOUT
 
@@ -176,7 +166,7 @@ def main():#Added main for tidy up
     function def::
     Main function allows to run on cmd line with the path to test file as an argument
     On cmd line check the arguement len is greater than 1, this means a path to the test file has been attached
-
+    This function also strips the array brackets and commas out on the print out.
     '''
     # Pass the path of the file as an argument
     arguments = len(sys.argv) - 1
@@ -186,29 +176,20 @@ def main():#Added main for tidy up
     if (arguments >= position): #check arguements are given at cmd line and pick up the path to the file
         args = parse.parse_args()
         filename = args.Path_to_file
-        #print("I ran")
+
         filename = json.load(open(filename,'r'))
         a = solve_0a938d79(filename)
     else:
         a = solve_0a938d79()#if no path to file is given on cmd run default on localfile.
         print("You added no path to cmd line so localfile run")
-    #for element in a:
-        #sys.stdout.write(str(element))
-        ## printing the output of the slove function.
 
-    #for i in range(len(a)):#Put space between ouput arrays
-        #print(" ")
-        #print(*a[i],sep=' ')
-    for row in a:
+
+
+    for row in a:##added to put a space between each output and to remove the brackets and commas.
         for elem in row:
             print(*elem, end=' ')
             print('\n')
         print()
-
-        #Print(*a[i], sep="")
-        #print (" ".join(map(str,a)))
-
-
 
 
 if __name__=="__main__":#execute only if run as a script
